@@ -8,7 +8,7 @@ import {
 import { VideosGrid } from "@jellyfish-dev/react-native-jellyfish-components";
 import { InCallButton } from "@jellyfish-dev/react-native-jellyfish-components";
 
-function RoomScreen({ navigation }): JSX.Element {
+function RoomScreen({ navigation }: any): JSX.Element {
   const peers = usePeers();
   const { cleanUp } = useJellyfishClient();
 
