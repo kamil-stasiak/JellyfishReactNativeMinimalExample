@@ -10,8 +10,13 @@
     "test": "jest"
   },
   "dependencies": {
+    "@expo-google-fonts/noto-sans": "^0.2.3",
+    "@expo/vector-icons": "^13.0.0",
     "@jellyfish-dev/react-native-client-sdk": "^0.1.2",
+    "@jellyfish-dev/react-native-jellyfish-components": "^0.1.0",
     "expo": "^49.0.0",
+    "expo-barcode-scanner": "~12.5.3",
+    "expo-font": "~11.4.0",
     "react": "18.2.0",
     "react-native": "0.72.4"
   },
