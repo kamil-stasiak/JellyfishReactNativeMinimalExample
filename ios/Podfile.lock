@@ -92,7 +92,26 @@ PODS:
     - hermes-engine/Pre-built (= 0.72.4)
   - hermes-engine/Pre-built (0.72.4)
   - libevent (2.1.12)
+  - MembraneRTC (5.0.0):
+    - MembraneRTC/Broadcast (= 5.0.0)
+    - PromisesSwift
+    - SwiftLogJellyfish (= 1.5.2)
+    - SwiftPhoenixClient (~> 4.0.0)
+    - SwiftProtobuf
+    - WebRTC-SDK (= 104.5112.15)
+  - MembraneRTC/Broadcast (5.0.0):
+    - PromisesSwift
+    - SwiftLogJellyfish (= 1.5.2)
+    - SwiftPhoenixClient (~> 4.0.0)
+    - SwiftProtobuf
+    - WebRTC-SDK (= 104.5112.15)
+  - MembraneWebRTC (6.0.0):
+    - ExpoModulesCore
+    - MembraneRTC (= 5.0.0)
   - OpenSSL-Universal (1.1.1100)
+  - PromisesObjC (2.3.1)
+  - PromisesSwift (2.3.1):
+    - PromisesObjC (= 2.3.1)
   - RCT-Folly (2021.07.22.00):
     - boost
     - DoubleConversion
@@ -504,6 +523,12 @@ PODS:
     - React-logger (= 0.72.4)
     - React-perflogger (= 0.72.4)
   - SocketRocket (0.6.1)
+  - SwiftLogJellyfish (1.5.2)
+  - SwiftPhoenixClient (4.0.0):
+    - SwiftPhoenixClient/Core (= 4.0.0)
+  - SwiftPhoenixClient/Core (4.0.0)
+  - SwiftProtobuf (1.23.0)
+  - WebRTC-SDK (104.5112.15)
   - Yoga (1.14.0)
   - YogaKit (1.18.1):
     - Yoga (~> 1.14)
@@ -543,6 +568,7 @@ DEPENDENCIES:
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - hermes-engine (from `../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec`)
   - libevent (~> 2.1.12)
+  - "MembraneWebRTC (from `../node_modules/@jellyfish-dev/react-native-membrane-webrtc/ios`)"
   - OpenSSL-Universal (= 1.1.1100)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -593,8 +619,15 @@ SPEC REPOS:
     - FlipperKit
     - fmt
     - libevent
+    - MembraneRTC
     - OpenSSL-Universal
+    - PromisesObjC
+    - PromisesSwift
     - SocketRocket
+    - SwiftLogJellyfish
+    - SwiftPhoenixClient
+    - SwiftProtobuf
+    - WebRTC-SDK
     - YogaKit
 
 EXTERNAL SOURCES:
@@ -625,6 +658,8 @@ EXTERNAL SOURCES:
   hermes-engine:
     :podspec: "../node_modules/react-native/sdks/hermes-engine/hermes-engine.podspec"
     :tag: hermes-2023-08-07-RNv0.72.4-813b2def12bc9df02654b3e3653ae4a68d0572e0
+  MembraneWebRTC:
+    :path: "../node_modules/@jellyfish-dev/react-native-membrane-webrtc/ios"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
   RCTRequired:
@@ -717,7 +752,11 @@ SPEC CHECKSUMS:
   glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
   hermes-engine: 81191603c4eaa01f5e4ae5737a9efcf64756c7b2
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
+  MembraneRTC: b6f6a85d9bcc83a74a834eac9861fcc4804163a8
+  MembraneWebRTC: 45729a566d617bf2996756bda26773a0a981823e
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
+  PromisesObjC: c50d2056b5253dadbd6c2bea79b0674bd5a52fa4
+  PromisesSwift: 28dca69a9c40779916ac2d6985a0192a5cb4a265
   RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
   RCTRequired: c0569ecc035894e4a68baecb30fe6a7ea6e399f9
   RCTTypeSafety: e90354072c21236e0bcf1699011e39acd25fea2f
@@ -751,6 +790,10 @@ SPEC CHECKSUMS:
   React-utils: b79f2411931f9d3ea5781404dcbb2fa8a837e13a
   ReactCommon: 4b2bdcb50a3543e1c2b2849ad44533686610826d
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
+  SwiftLogJellyfish: 6207ec91ef3913d303ac797b73298248ee360eb0
+  SwiftPhoenixClient: 4e36f35d00e43d11881c255bd60c20efc0f39c91
+  SwiftProtobuf: b70d65f419fbfe61a2d58003456ca5da58e337d6
+  WebRTC-SDK: 18eef1ab50d4c0239adc1cbca33d4ffd9fab6639
   Yoga: 3efc43e0d48686ce2e8c60f99d4e6bd349aff981
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
