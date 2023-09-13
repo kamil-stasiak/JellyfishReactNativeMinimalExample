@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, StyleSheet, Permission, PermissionsAndroid } from "react-native";
 import {
   Button,
@@ -15,7 +15,9 @@ const JELLYFISH_URL = "ws://192.168.81.152:4000/socket/peer/websocket";
 const { startCamera } = useCamera();
 
 function ConnectScreen({ navigation }): JSX.Element {
-  const [peerToken, setPeerToken] = useState<string>("");
+    console.log("Additional line")
+//   const [peerToken, setPeerToken] = useState<string>("");
+  const peerToken = ""
 
   const { connect, join } = useJellyfishClient();
 
@@ -53,11 +55,11 @@ function ConnectScreen({ navigation }): JSX.Element {
       <TextInput
         placeholder="Enter peer token"
         value={peerToken}
-        onChangeText={setPeerToken}
+        onChangeText={() => {}}
       />
       <Button onPress={connectToRoom} title="Connect" disabled={!peerToken} />
 
-      <QRCodeScanner onCodeScanned={setPeerToken} />
+      <QRCodeScanner onCodeScanned={() => {}} />
     </View>
   );
 }
