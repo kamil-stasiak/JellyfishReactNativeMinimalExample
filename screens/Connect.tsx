@@ -1,5 +1,11 @@
-import React from "react";
-import { View, StyleSheet, Permission, PermissionsAndroid } from "react-native";
+import React, { useState } from "react";
+import { 
+  View,
+  StyleSheet,
+  type Permission,
+  PermissionsAndroid,
+  Platform,
+ } from "react-native";
 import {
   Button,
   TextInput,
@@ -7,31 +13,25 @@ import {
 } from "@jellyfish-dev/react-native-jellyfish-components";
 import { useJellyfishClient, useCamera } from "@jellyfish-dev/react-native-client-sdk";
 
-// This is the address of the Jellyfish backend. Change the local IP to yours. We
-// strongly recommend setting this as an environment variable, we hardcoded it here
-// for simplicity.
-const JELLYFISH_URL = "ws://192.168.81.152:4000/socket/peer/websocket";
-
-const { startCamera } = useCamera();
+const JELLYFISH_URL = 'ws://192.168.83.88:4000/socket/peer/websocket';
 
 function ConnectScreen({ navigation }): JSX.Element {
-    console.log("Additional line")
-//   const [peerToken, setPeerToken] = useState<string>("");
-  const peerToken = ""
+  const [peerToken, setPeerToken] = useState<string>('');
 
   const { connect, join } = useJellyfishClient();
+  const { startCamera } = useCamera();
 
   const grantedCameraPermissions = async () => {
+    if (Platform.OS === 'ios') return true;
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.CAMERA as Permission
     );
     if (granted !== PermissionsAndroid.RESULTS.GRANTED) {
-      console.error("Camera permission denied");
+      console.error('Camera permission denied');
       return false;
     }
     return true;
   };
-
 
   const connectToRoom = async () => {
     try {
@@ -40,26 +40,24 @@ function ConnectScreen({ navigation }): JSX.Element {
       if (!(await grantedCameraPermissions())) {
         return;
       }
-      await startCamera();
 
-      await join({ name: "Mobile RN Client" });
-      navigation.navigate("Room");
+      await startCamera();
+      await join({ name: 'Mobile RN Client' });
+      navigation.navigate('Room');
     } catch (e) {
-      console.log("Error while connecting", e);
+      console.log('Error while connecting', e);
     }
   };
-  
 
   return (
     <View style={styles.container}>
       <TextInput
         placeholder="Enter peer token"
         value={peerToken}
-        onChangeText={() => {}}
+        onChangeText={setPeerToken}
       />
       <Button onPress={connectToRoom} title="Connect" disabled={!peerToken} />
-
-      <QRCodeScanner onCodeScanned={() => {}} />
+      <QRCodeScanner onCodeScanned={setPeerToken} />
     </View>
   );
 }
@@ -67,8 +65,8 @@ function ConnectScreen({ navigation }): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: "#BFE7F8",
+    justifyContent: 'center',
+    backgroundColor: '#BFE7F8',
     padding: 24,
     rowGap: 24,
   },

@@ -1,15 +1,14 @@
-import React from "react";
-import { View, StyleSheet } from "react-native";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
 import {
   usePeers,
-  VideoRendererView,
   useJellyfishClient,
-} from "@jellyfish-dev/react-native-client-sdk";
-import { VideosGrid } from "@jellyfish-dev/react-native-jellyfish-components";
-import { InCallButton } from "@jellyfish-dev/react-native-jellyfish-components";
+} from '@jellyfish-dev/react-native-client-sdk';
+import { InCallButton, VideosGrid } from '@jellyfish-dev/react-native-jellyfish-components';
 
-function RoomScreen({ navigation }: any): JSX.Element {
+function RoomScreen({ navigation }): JSX.Element {
   const peers = usePeers();
+
   const { cleanUp } = useJellyfishClient();
 
   const onDisconnectPress = () => {
@@ -22,7 +21,7 @@ function RoomScreen({ navigation }: any): JSX.Element {
       <VideosGrid
         tracks={peers.map((peer) => peer.tracks[0]?.id).filter((t) => t)}
       />
-       <InCallButton
+      <InCallButton
         type="disconnect"
         iconName="phone-hangup"
         onPress={onDisconnectPress}
@@ -34,17 +33,17 @@ function RoomScreen({ navigation }: any): JSX.Element {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "space-between",
-    backgroundColor: "#F1FAFE",
-    padding: 24,
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#F1FAFE',
+    paddingVertical: 24,
   },
   videoContainer: {
-    flexDirection: "row",
+    flexDirection: 'row',
     gap: 8,
-    flexWrap: "wrap",
+    flexWrap: 'wrap',
   },
-  video: { width: 200, height: 200 },
+  video: { width: 100, height: 100 },
 });
 
 export default RoomScreen;
